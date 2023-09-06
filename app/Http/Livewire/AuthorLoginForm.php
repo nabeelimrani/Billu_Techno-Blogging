@@ -5,6 +5,10 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class AuthorLoginForm extends Component
 {
@@ -23,11 +27,11 @@ class AuthorLoginForm extends Component
                 'password' => 'required|between:5,10'
             ],
         [
-            'login_id.required' => 'Email Address or Username is required.',
-            'login_id.email' => 'Invalid Email Address format.',
-            'login_id.exists' => 'This Email Address is not registered.',
-            'password.required' => 'Password is required.',
-            'password.between' => 'Password must be between 5 and 10 characters.'
+            'login_id.required' => 'Email Address or Username is Required *',
+            'login_id.email' => 'Invalid Email Address Format *',
+            'login_id.exists' => 'This Email Address is not Registered *',
+            'password.required' => 'Password is Required *',
+            'password.between' => 'Password must be between 5 and 10 Characters *'
         ]);
         }
         else
@@ -37,10 +41,10 @@ class AuthorLoginForm extends Component
                 'password' => 'required|between:5,10'
             ],
         [
-            'login_id.required' => 'Email Address or Username is required.',
-            'login_id.exists' => 'This Username is not registered.',
-            'password.required' => 'Password is required.',
-            'password.between' => 'Password must be between 5 and 10 characters.'
+            'login_id.required' => 'Email Address or Username is Required *',
+            'login_id.exists' => 'This Username is not Registered *',
+            'password.required' => 'Password is Required *',
+            'password.between' => 'Password must be between 5 and 10 Characters *'
         ]);
         }
 
@@ -66,6 +70,7 @@ class AuthorLoginForm extends Component
                 Auth::logout();
                 return redirect()->route('author.login')->with('fail', 'Your account has been blocked.');
             } else {
+
                 return redirect()->route('author.home')->with('success','Welcome Back <strong> Mr:' . $name . '</strong>');
                 
             }

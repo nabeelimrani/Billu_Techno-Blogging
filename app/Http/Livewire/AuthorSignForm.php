@@ -18,12 +18,12 @@ class AuthorSignForm extends Component
             'password' => 'required|min:5',
         ],
         [
-            'name.required' => 'Please enter your name',
-            'email.required' => 'Please enter your email address',
-            'email.email' => 'Invalid email address format',
-            'email.unique' => 'This email is already registered',
-            'password.required' => 'Please enter a password',
-            'password.min' => 'Password must be at least 5 characters long',
+            'name.required' => 'Please Enter Your Name *',
+            'email.required' => 'Please Enter Your Email Address *',
+            'email.email' => 'In-Valid Email Address Format *',
+            'email.unique' => 'This Email Address is already Registered * ',
+            'password.required' => 'Please enter a Password *',
+            'password.min' => 'Password must be at least 5 Characters Long *',
         ]);
 
         $user = User::create([
