@@ -47,10 +47,16 @@
           </div>
           <div class="mb-3">
             <label class="form-check">
-              <input type="checkbox" class="form-check-input">
-              <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
+                <input type="checkbox" wire:model="terms" class="form-check-input" value="1" >
+                <span class="form-check-label">Agree to the <a href="#" tabindex="-1">terms and policy</a>.</span>
             </label>
-          </div>
+        </div>
+        @error('terms')
+            <span class="text-danger">
+                {{ $message }}
+            </span>
+        @enderror
+        
           <div class="form-footer">
             <button type="submit" class="btn btn-primary w-100">Create new account</button>
           </div>
