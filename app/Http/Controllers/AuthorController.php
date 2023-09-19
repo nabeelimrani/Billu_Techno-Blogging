@@ -27,4 +27,10 @@ class AuthorController extends Controller
  
         return view('back.pages.auth.reset',$data)->with(['token'=>$token,'email'=>$request->email]);
     }
+
+    public function profile()
+    {
+        
+        return view ('back.pages.profile');
+    }
 }
