@@ -3,6 +3,13 @@
 @section('content')
 
 
+@if(session('success') || session('warning') || session('info') || session('danger'))
+<div class="alert alert-{{ session('success') ? 'success' : (session('warning') ? 'warning' : (session('info') ? 'info' : 'danger')) }}" id="alert">
+  {{ session('success') . session('warning') . session('info') . session('danger') }}
+</div>
+@endif
+
+
 
 @livewire('author-profile-header')
 <hr>
@@ -38,14 +45,16 @@
   <div class="card-body">
     <div class="tab-content">
       <div class="tab-pane active show" id="tabs-detail">
-        <h4>Personal Detail</h4>
+        
         <div>
            @livewire('author-personal-detail')
         </div>
       </div>
       <div class="tab-pane" id="tabs-password">
-        <h4>Profile tab</h4>
-        <div>Fringilla egestas nunc quis tellus diam rhoncus ultricies tristique enim at diam, sem nunc amet, pellentesque id egestas velit sed</div>
+        
+        <div>
+          @livewire('author-change-password')
+        </div>
       </div>
       
     </div>
@@ -54,6 +63,12 @@
 
 </div>
 
+<script>
 
+    setTimeout(function() {
+        document.getElementById('alert').style.display = 'none';
+    }, 2000); // 2000 milliseconds (2 seconds)
+</script>
+ 
 
 @endsection

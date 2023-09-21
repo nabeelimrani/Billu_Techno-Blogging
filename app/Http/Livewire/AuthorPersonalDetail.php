@@ -18,32 +18,43 @@ class AuthorPersonalDetail extends Component
         $this->biography = $this->author->biography;
     }
     public function UpdateDetail()
-    {
-        $this->validate([
-            'name' => 'required|string',
-            'username' => 'required|unique:users,username,'.auth('web')->id(),
-           
-        ],
+{
+    $this->validate([
+        'name' => 'required|string',
+        'username' => 'required|unique:users,username,' . auth('web')->id(),
+    ],
     [
         'name.required' => 'Name is Required *',
         'name.string' => 'Name must be Alphabets *',
         'username.required' => 'Username is Required *',
         'username.unique' => 'This Username Already Exists *',
-       
     ]);
 
-        User::where('id', auth('web')->id())->update([
-            'name' => $this->name,
-            'username' => $this->username,
-            'email' => $this->email,
-            'biography' => $this->biography,
-        ]);
-
-        $this->emit('updateAuthorProfileHeader');
+    User::where('id', auth('web')->id())->update([
+        'name' => $this->name,
+        'username' => $this->username,
+        'email' => $this->email,
+        'biography' => $this->biography,
+    ]);
+    $this->emit('showToastr', [
+        'type' => 'success', 
+        'message' => 'User information updated successfully.'
+    ]);
+    $this->emit('updateAuthorProfileHeader');
     $this->emit('updateTopHeader');
-    
-    }
-    public function render()
+   session()->flash('success','Your Profile Successfully Updated');
+   return redirect()->route('author.profile'); 
+}
+
+public function showToastr($message, $type)
+{
+    return $this->dispatchBrowserEvent('showToastr', [
+        'type' => $type,
+        'message' => $message
+    ]);
+}
+
+ public function render()
     {
         return view('livewire.author-personal-detail');
     }
