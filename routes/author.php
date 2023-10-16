@@ -17,5 +17,6 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::get('/home',[AuthorController::class,'index'])->name('home');
         Route::post('/logout',[AuthorController::class,'logout'])->name('logout');
         Route::get('/profile',[AuthorController::class,'profile'])->name('profile');
+        Route::post('/change-profile-picture', [AuthorController::class, 'changeProfilePicture'])->name('change-profile-picture');
     });
 });

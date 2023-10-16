@@ -22,6 +22,7 @@
     <link href="./back/dist/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
     
     <link href="{{asset('back/dist/libs/toastr/jquery.toast.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('back/dist/libs/ijaboCropTool/ijaboCropTool.min.css')}}" rel="stylesheet"/>
 
 
     @stack('stylesheets')
@@ -53,6 +54,7 @@
     <!-- Libs JS -->
     <script src="{{asset('back/dist/libs/jquery/jquery.js')}}"></script>
     <script src="{{asset('back/dist/libs/toastr/jquery.toastr.min.js')}}"></script>
+    <script src="{{asset('back/dist/libs/ijaboCropTool/ijaboCropTool.min.js')}}"></script>
     <script src="./back/dist/libs/apexcharts/dist/apexcharts.min.js" ></script>
    
   

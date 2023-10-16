@@ -52,4 +52,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Type::class,'type','id');
     }
+
+    public function getPictureAttribute($value)
+    {
+        if($value)
+        {
+            return asset('back/dist/img/profile/'. $value);
+       }
+       else
+       {
+        return asset('back/dist/img/profile/user.png');
+       }
+    }
 }

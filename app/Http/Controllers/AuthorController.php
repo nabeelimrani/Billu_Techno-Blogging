@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class AuthorController extends Controller
 {
@@ -32,5 +33,13 @@ class AuthorController extends Controller
     {
         
         return view ('back.pages.profile');
+    }
+
+    public function changeProfilePicture(Request $request)
+    {
+      $user =  User::find(auth('web')->id());
+      $path = 'back/dist/img/profile/';
+      $file = $request->file('file');
+      dd($file);
     }
 }

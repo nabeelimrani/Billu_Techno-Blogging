@@ -62,13 +62,35 @@
 </div>
 
 </div>
+@push('scripts')
 
 <script>
 
-    setTimeout(function() {
-        document.getElementById('alert').style.display = 'none';
-    }, 2000); // 2000 milliseconds (2 seconds)
-</script>
+  setTimeout(function() {
+      document.getElementById('alert').style.display = 'none';
+  }, 2000); 
+
+
+       $('#ChangeAuthoreProfilePicture').ijaboCropTool({
+          preview : '',
+          setRatio:1,
+          allowedExtensions: ['jpg', 'jpeg','png'],
+          buttonsText:['CROP','QUIT'],
+          buttonsColor:['#30bf7d','#ee5155', -15],
+          processUrl:'{{ route("author.change-profile-picture") }}',
+          withCSRF:['_token','{{ csrf_token() }}'],
+          onSuccess:function(message, element, status){
+             alert(message);
+          },
+          onError:function(message, element, status){
+            alert(message);
+          }
+       });
+  </script>
+<
+
+@endpush
+
  
 
 @endsection

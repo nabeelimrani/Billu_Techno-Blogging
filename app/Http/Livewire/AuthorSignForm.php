@@ -14,7 +14,7 @@ class AuthorSignForm extends Component
     {
         $this->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email:filter|unique:users,email',
             'password' => 'required|min:5',
             'terms' => 'required',
         ], [
